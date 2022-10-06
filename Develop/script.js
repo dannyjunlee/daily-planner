@@ -35,28 +35,11 @@ function renderSchedule() {
     for (let i = 0; i < timeBlockEl.children().length; i++) {
         var index = timeBlockEl.children().eq(i).children().eq(0).text().trim();
         if (localStorage.getItem(index) !== null) {
-            console.log("Event exists at " + index + " time");
             eventRender = JSON.parse(localStorage.getItem(index));
-            console.log(eventRender);
-            timeBlockEl.children().eq(i).children().eq(1).text(eventRender);
-        } else {
-            console.log("There is no event for " + index);
+            timeBlockEl.children().eq(i).children().eq(1).val(eventRender);
         }
     }
 };
-
-var example = timeBlockEl.children().eq(0).children().eq(0).text().trim();
-console.log(example);
-
-console.log(JSON.parse(localStorage.getItem(example)));
-
-if (localStorage.getItem(example) !== null) {
-    console.log("9AM exists");
-} else {
-    console.log("Object does not exist");
-};
-
-console.log(JSON.parse(localStorage.getItem("9AM")));
 
 // USER INTERACTIONS
     // When user scrolls down, user is presented with time blocks for standard business hours
