@@ -37,7 +37,9 @@ $(".custom-save-box").on("click", function() {
 function renderSchedule() {
     for (let i = 0; i < timeBlockEl.children().length; i++) {
         var renderItem = localStorage.getItem(timeBlockEl.children().eq(i).children().eq(0).text());
-        timeBlockEl.children().eq(i).children().eq(1).text(renderItem);
+        if (timeBlockEl.children().eq(i).children().eq(1).text() !== "") {
+            timeBlockEl.children().eq(i).children().eq(1).text(renderItem);
+        };
     }
 };
 

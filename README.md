@@ -38,4 +38,4 @@ THEN the saved events persist
 
 ## Demo
 
-![demo](./assets/images/05-third-party-apis-homework-demo.gif)
+![demo](./Develop/05-third-party-apis-homework-demo.gif)
