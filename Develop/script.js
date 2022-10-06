@@ -33,10 +33,15 @@ function timeBlockCheck() {
     // When user refreshes page, saved events will be rendered back to page
 function renderSchedule() {
     for (let i = 0; i < timeBlockEl.children().length; i++) {
-        var renderItem = localStorage.getItem(i);
-        if (timeBlockEl.children().eq(i).children().eq(1).text() !== "") {
-            timeBlockEl.children().eq(i).children().eq(1).text(renderItem);
-        };
+        var index = timeBlockEl.children().eq(i).children().eq(0).text().trim();
+        if (localStorage.getItem(index) !== null) {
+            console.log("Event exists at " + index + " time");
+            eventRender = JSON.parse(localStorage.getItem(index));
+            console.log(eventRender);
+            timeBlockEl.children().eq(i).children().eq(1).text(eventRender);
+        } else {
+            console.log("There is no event for " + index);
+        }
     }
 };
 
@@ -45,7 +50,13 @@ console.log(example);
 
 console.log(JSON.parse(localStorage.getItem(example)));
 
-console.log(localStorage.getItem("12PM"));
+if (localStorage.getItem(example) !== null) {
+    console.log("9AM exists");
+} else {
+    console.log("Object does not exist");
+};
+
+console.log(JSON.parse(localStorage.getItem("9AM")));
 
 // USER INTERACTIONS
     // When user scrolls down, user is presented with time blocks for standard business hours
@@ -54,7 +65,7 @@ console.log(localStorage.getItem("12PM"));
 $(".custom-save-box").on("click", function() {
     var scheduledEvent = $(this).siblings("input").val();
     var scheduledTime = $(this).siblings(".custom-time-border").text().trim();
-    localStorage.setItem(scheduledTime, JSON.stringify(scheduledEvent));
+    localStorage.setItem(scheduledTime.trim(), JSON.stringify(scheduledEvent));
 });
 
 // INITIALIZATION
