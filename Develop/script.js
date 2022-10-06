@@ -28,25 +28,34 @@ function timeBlockCheck() {
         // Accomplished by just setting type in HTML to input;
 
     // Save event to local storage
-$(".custom-save-box").on("click", function() {
-    var scheduledEvent = $(this).siblings("input").val();
-    var scheduledTime = $(this).siblings(".custom-time-border").text();
-    localStorage.setItem(scheduledTime, scheduledEvent);
-});
 
+
+    // When user refreshes page, saved events will be rendered back to page
 function renderSchedule() {
     for (let i = 0; i < timeBlockEl.children().length; i++) {
-        var renderItem = localStorage.getItem(timeBlockEl.children().eq(i).children().eq(0).text());
+        var renderItem = localStorage.getItem(i);
         if (timeBlockEl.children().eq(i).children().eq(1).text() !== "") {
             timeBlockEl.children().eq(i).children().eq(1).text(renderItem);
         };
     }
 };
 
+var example = timeBlockEl.children().eq(0).children().eq(0).text().trim();
+console.log(example);
+
+console.log(JSON.parse(localStorage.getItem(example)));
+
+console.log(localStorage.getItem("12PM"));
+
 // USER INTERACTIONS
     // When user scrolls down, user is presented with time blocks for standard business hours
     // When user clicks time block, user can enter event
-    // User input is saved to local storage so that when the page is refreshed, the saved events persist
+    // When user clicks save icon, the event will be saved to Local Storage
+$(".custom-save-box").on("click", function() {
+    var scheduledEvent = $(this).siblings("input").val();
+    var scheduledTime = $(this).siblings(".custom-time-border").text().trim();
+    localStorage.setItem(scheduledTime, JSON.stringify(scheduledEvent));
+});
 
 // INITIALIZATION
 displayTime();

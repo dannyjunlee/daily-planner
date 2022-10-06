@@ -78,6 +78,7 @@ input {
 .custom-time-border {
   border-right: black;
   border-bottom: 1px dotted black;
+  text-align: center;
 }
 
 .custom-save-box {
