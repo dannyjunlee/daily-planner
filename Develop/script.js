@@ -45,10 +45,13 @@ function renderSchedule() {
     // When user scrolls down, user is presented with time blocks for standard business hours
     // When user clicks time block, user can enter event
     // When user clicks save icon, the event will be saved to Local Storage
-$(".custom-save-box").on("click", function() {
-    var scheduledEvent = $(this).siblings("input").val();
-    var scheduledTime = $(this).siblings(".custom-time-border").text().trim();
-    localStorage.setItem(scheduledTime.trim(), JSON.stringify(scheduledEvent));
+
+$("#save-btn").on("click", function() {
+    for (let i = 0; i < timeBlockEl.children().length; i++) {
+        const scheduledEvent = timeBlockEl.children().eq(i).children().eq(1).val();
+        const scheduledTime = timeBlockEl.children().eq(i).children().eq(0).text().trim();
+        localStorage.setItem(scheduledTime.trim(), JSON.stringify(scheduledEvent));
+    };
 });
 
 // INITIALIZATION
