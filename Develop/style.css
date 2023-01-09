@@ -64,6 +64,11 @@ input {
   color: white;
 }
 
+#save-btn:active {
+  background-color: rgb(70, 70, 206);
+  box-shadow: inset -5px -5px 5px black;
+}
+
 .saveBtn i:hover {
   font-size: 20px;
   transition: all .3s ease-in-out;
