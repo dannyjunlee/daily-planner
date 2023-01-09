@@ -14,7 +14,7 @@ function displayTime() {
     // Time blocks are color-coded indicating past, present, or future;
 function timeBlockCheck() {
     for (let i=0; i < timeBlockEl.children().length; i++) {
-        var timeTest = i+9;
+        var timeTest = i;
         if (moment().format("H") == timeTest) {
             timeBlockEl.children().eq(i).children().eq(1).addClass("bg-danger");
         } else if (moment().format("H") > timeTest) {
